@@ -11,6 +11,7 @@ card_values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6,
 
 # some basic functions
 
+
 def print_decks(deck1):
     print("Dealer's Hand")
     if len(comp_hand) == 1:
@@ -68,7 +69,7 @@ class Chips():
         return f'You have {self.value} chips left !!'
 
     def bet_money(self):
-        self.bet=1000
+        self.bet = 1000
         while self.bet > self.value:
             try:
                 self.bet = int(input('Enter the amount you want to bet:- '))
@@ -81,6 +82,8 @@ class Chips():
 
     def money_lose(self):
         self.value -= self.bet
+
+
 class Deck():
     def __init__(self):
         self.deck = []
@@ -97,7 +100,7 @@ class Deck():
 
 class Hand():
     def __init__(self, player):
-        self.player=player
+        self.player = player
         self.hand = []
         # deal 2 cards to user or 1 card to comp
         self.hand.append(the_deck.get_card())
@@ -137,7 +140,7 @@ class Hand():
 running = True
 money = Chips(100)
 while running:
-# starting variables and objects
+    # starting variables and objects
     the_deck = Deck()
     user_state = 'none'
     comp_state = 'none'
@@ -170,11 +173,6 @@ while running:
                 user_hand.add_card()
 # inner game loop 2(for dealer)
     while won == 'none':
-        # print the decks
-        print("Dealer's move....")
-        print('\n')
-        time.sleep(2)
-        print_decks(user_hand)
 # check if dealer won or lost or tie(end loop if won or lost)
         if comp_hand.get_value() > 21:  # comp bust
             comp_bust()
@@ -186,6 +184,11 @@ while running:
                 print(f'Its a TIE!')
             else:  # comp win
                 comp_win()
+        # print the decks
+        print("Dealer's move....")
+        print('\n')
+        time.sleep(3)
+        print_decks(user_hand)
 # decide to hit or hold
         if user_hand.get_value() > comp_hand.get_value():
             comp_state = 'hit'
@@ -205,7 +208,7 @@ while running:
     if money.value > 0:
         again = 'none'
         while again != 'yes' and again != 'no':
-            again = input('Do you wish to another hand? enter yes or no:- ')
+            again = input('Do you wish to play another hand? enter "yes" or "no":- ')
         if again == 'no':
             running = False
         else:
