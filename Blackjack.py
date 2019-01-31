@@ -173,6 +173,11 @@ while running:
                 user_hand.add_card()
 # inner game loop 2(for dealer)
     while won == 'none':
+        # print the decks
+        print("Dealer's move....")
+        print('\n')
+        time.sleep(3)
+        print_decks(user_hand)
 # check if dealer won or lost or tie(end loop if won or lost)
         if comp_hand.get_value() > 21:  # comp bust
             comp_bust()
@@ -184,11 +189,6 @@ while running:
                 print(f'Its a TIE!')
             else:  # comp win
                 comp_win()
-        # print the decks
-        print("Dealer's move....")
-        print('\n')
-        time.sleep(3)
-        print_decks(user_hand)
 # decide to hit or hold
         if user_hand.get_value() > comp_hand.get_value():
             comp_state = 'hit'
